@@ -1,0 +1,17 @@
+{
+  "name": "RentEase",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "rentease-api",
+    "rentease-web"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn workspace rentease-api dev\" \"yarn workspace rentease-web dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
