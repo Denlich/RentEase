@@ -11,6 +11,13 @@ class UserRepository {
     return !!userSequelizeInstance === true;
   }
 
+  public async findByUsername(username: string): Promise<SequelizeUser> {
+    const userSequelizeInstance = await SequelizeUser.findOne({
+      where: { username },
+    });
+    return userSequelizeInstance!;
+  }
+
   public async save(user: CreateUserDTO): Promise<SequelizeUser> {
     const userSequelizeInstance = await SequelizeUser.create(user);
     return userSequelizeInstance;

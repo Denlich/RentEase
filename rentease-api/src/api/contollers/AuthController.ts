@@ -16,4 +16,13 @@ export class AuthController {
       next(error);
     }
   };
+
+  login = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userToken = await this.authService.login(req.body);
+      return res.status(200).json(userToken);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

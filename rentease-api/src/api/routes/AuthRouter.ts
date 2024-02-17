@@ -13,4 +13,11 @@ router.post(
   authController.register
 );
 
+router.post(
+  "/login",
+  AuthValidator.validateLogin,
+  validationHandler,
+  authController.login
+);
+
 export { router as authRouter };
