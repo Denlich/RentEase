@@ -18,7 +18,7 @@ export class AuthService {
     const userExists = await this.userRepository.exists(user.username);
 
     if (userExists) {
-      throw new AlreadyRegisteredException();
+      throw new AlreadyRegisteredException(user.username);
     }
 
     const hashedPassword = await this.hashPassword(user.password);

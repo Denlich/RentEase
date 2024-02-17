@@ -1,13 +1,12 @@
-import { Op } from "sequelize";
 import { CreateUserDTO } from "../api/dtos/UserDTO.js";
 import { SequelizeUser } from "../database/models/User.js";
 
 class UserRepository {
   constructor() {}
 
-  public async exists(userParam: string): Promise<boolean> {
+  public async exists(username: string): Promise<boolean> {
     const userSequelizeInstance = await SequelizeUser.findOne({
-      where: { [Op.or]: [{ id: userParam }, { username: userParam }] },
+      where: { username },
     });
     return !!userSequelizeInstance === true;
   }
