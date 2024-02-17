@@ -1,10 +1,9 @@
 import { Options } from "sequelize";
 
 export const development: Options = {
-  host: process.env.DB_HOST,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  port: Number(process.env.DB_PORT),
-  database: process.env.DB_NAME,
+  username: "postgres",
+  password: "postgres",
+  database: "rentease_db",
+  host: "127.0.0.1",
   dialect: "postgres",
 };
