@@ -15,5 +15,12 @@ router.post(
   jwtTokenVerify,
   flatController.create
 );
+router.put(
+  "/:id",
+  FlatValidator.validateUpdate,
+  validationHandler,
+  jwtTokenVerify,
+  flatController.update
+);
 
 export { router as flatRouter };

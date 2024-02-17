@@ -28,4 +28,21 @@ export class FlatController {
       next(error);
     }
   };
+
+  update = async (req: Request, res: Response, next: NextFunction) => {
+    const flatId = req.params.id;
+    const userId = req.body.id;
+    const body = req.body;
+
+    try {
+      const flat = await this.flatService.update(
+        parseInt(flatId),
+        parseInt(userId),
+        body
+      );
+      res.status(200).json(flat);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

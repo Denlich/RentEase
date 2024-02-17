@@ -1,5 +1,5 @@
 import { FlatRepository } from "../../repositories/FlatRepository.js";
-import { CreateFlatDTO } from "../dtos/FlatDTO.js";
+import { CreateFlatDTO, UpdateFlatDTO } from "../dtos/FlatDTO.js";
 
 export class FlatService {
   private flatRepository: FlatRepository;
@@ -14,5 +14,9 @@ export class FlatService {
 
   public async create(userId: number, flat: CreateFlatDTO) {
     return this.flatRepository.save({ ...flat, userId });
+  }
+
+  public async update(flatId: number, userId: number, flat: UpdateFlatDTO) {
+    return this.flatRepository.update(flatId, userId, flat);
   }
 }

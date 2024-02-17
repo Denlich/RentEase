@@ -7,3 +7,5 @@ export interface FlatDTO {
 }
 
 export type CreateFlatDTO = Omit<FlatDTO, "id">;
+
+export type UpdateFlatDTO = Partial<CreateFlatDTO>;
