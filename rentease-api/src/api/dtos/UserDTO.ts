@@ -16,3 +16,7 @@ export interface LoginUserDTO {
   username: string;
   password: string;
 }
+
+export type UpdateUserDTO = Partial<
+  Pick<UserDTO, "firstName" | "lastName" | "username">
+>;

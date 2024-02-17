@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { AuthController } from "../contollers/AuthController.js";
+import { AuthController } from "../controllers/AuthController.js";
 import { AuthValidator } from "../validators/AuthValidator.js";
 import { validationHandler } from "../middlewares/validationHandler.js";
 import { jwtTokenVerify } from "../middlewares/jwtTokenVerify.js";
