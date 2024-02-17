@@ -1,12 +1,12 @@
 import { Router } from "express";
 import { authRouter } from "./AuthRouter.js";
 import { userRouter } from "./UserRouter.js";
-import { UserValidator } from "../validators/UserValidator.js";
-import { validationHandler } from "../middlewares/validationHandler.js";
+import { flatRouter } from "./FlatRouter.js";
 
 const router = Router();
 
 router.use("/auth", authRouter);
 router.use("/users", userRouter);
+router.use("/flats", flatRouter);
 
 export default router;

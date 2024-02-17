@@ -5,6 +5,7 @@ import { sequelize } from "./database/sequelize.js";
 import router from "./api/routes/Router.js";
 import { errorHandler } from "./api/middlewares/errorHandler.js";
 import { SequelizeUser } from "./database/models/User.js";
+import { SequelizeFlat } from "./database/models/Flat.js";
 
 const app = express();
 const PORT = 3000;
@@ -20,6 +21,7 @@ const initApp = async () => {
     await sequelize.authenticate();
 
     SequelizeUser.sync({ alter: true });
+    SequelizeFlat.sync({ alter: true });
 
     app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
   } catch (error) {

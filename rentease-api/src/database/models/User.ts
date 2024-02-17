@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../sequelize.js";
+import { SequelizeFlat } from "./Flat.js";
 
 interface UserRow {
   id: string;
