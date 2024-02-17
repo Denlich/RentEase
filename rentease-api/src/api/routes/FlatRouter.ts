@@ -7,6 +7,7 @@ import { validationHandler } from "../middlewares/validationHandler.js";
 const router = Router();
 const flatController = new FlatController();
 
+router.get("/all", jwtTokenVerify, flatController.getAll);
 router.post(
   "/create",
   FlatValidator.validateCreation,

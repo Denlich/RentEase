@@ -8,6 +8,10 @@ export class FlatService {
     this.flatRepository = new FlatRepository();
   }
 
+  public async getAll() {
+    return this.flatRepository.getAll();
+  }
+
   public async create(userId: number, flat: CreateFlatDTO) {
     return this.flatRepository.save({ ...flat, userId });
   }
