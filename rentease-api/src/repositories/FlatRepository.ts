@@ -4,6 +4,11 @@ import { SequelizeFlat } from "../database/models/Flat.js";
 export class FlatRepository {
   constructor() {}
 
+  public async exists(flatId: number, userId: number): Promise<boolean> {
+    const flat = await SequelizeFlat.findOne({ where: { id: flatId, userId } });
+    return !!flat;
+  }
+
   public async getAll(): Promise<FlatDTO[]> {
     const flats = await SequelizeFlat.findAll();
     return flats;
@@ -23,11 +28,15 @@ export class FlatRepository {
       where: { id: flatId, userId },
     });
 
-    if (!flatSequelizeInstance) {
-      throw new Error("Flat not found");
-    }
+    await flatSequelizeInstance!.update(flat);
+    return flatSequelizeInstance!;
+  }
 
-    await flatSequelizeInstance.update(flat);
-    return flatSequelizeInstance;
+  public async delete(flatId: number, userId: number): Promise<void> {
+    const flatSequelizeInstance = await SequelizeFlat.findOne({
+      where: { id: flatId, userId },
+    });
+
+    await flatSequelizeInstance!.destroy();
   }
 }

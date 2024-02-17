@@ -22,5 +22,6 @@ router.put(
   jwtTokenVerify,
   flatController.update
 );
+router.delete("/:id", jwtTokenVerify, flatController.delete);
 
 export { router as flatRouter };

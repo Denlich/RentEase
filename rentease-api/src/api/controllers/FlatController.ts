@@ -45,4 +45,16 @@ export class FlatController {
       next(error);
     }
   };
+
+  delete = async (req: Request, res: Response, next: NextFunction) => {
+    const flatId = req.params.id;
+    const userId = req.body.id;
+
+    try {
+      await this.flatService.delete(parseInt(flatId), parseInt(userId));
+      res.status(200).json({ message: "Flat deleted" });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

@@ -1,4 +1,5 @@
 import { FlatRepository } from "../../repositories/FlatRepository.js";
+import { UnauthorizedException } from "../../utils/exceptions/UnauthorizedException.js";
 import { CreateFlatDTO, UpdateFlatDTO } from "../dtos/FlatDTO.js";
 
 export class FlatService {
@@ -17,6 +18,22 @@ export class FlatService {
   }
 
   public async update(flatId: number, userId: number, flat: UpdateFlatDTO) {
+    const flatExists = await this.flatRepository.exists(flatId, userId);
+
+    if (!flatExists) {
+      throw new UnauthorizedException("Flat not found");
+    }
+
     return this.flatRepository.update(flatId, userId, flat);
+  }
+
+  public async delete(flatId: number, userId: number) {
+    const flatExists = await this.flatRepository.exists(flatId, userId);
+
+    if (!flatExists) {
+      throw new UnauthorizedException("Flat not found");
+    }
+
+    return this.flatRepository.delete(flatId, userId);
   }
 }
