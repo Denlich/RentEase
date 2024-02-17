@@ -64,4 +64,10 @@ export class AuthService {
       accessToken: this.jwtService.generateToken(payload),
     };
   }
+
+  public async getMe(userId: number) {
+    const user = await this.userRepository.findById(userId);
+    if (user) return this.userMapper.toDTO(user);
+    throw new UnauthorizedException("Unauthorized");
+  }
 }

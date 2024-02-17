@@ -25,4 +25,13 @@ export class AuthController {
       next(error);
     }
   };
+
+  getMe = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const user = await this.authService.getMe(req.body.id);
+      return res.status(200).json(user);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

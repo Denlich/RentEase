@@ -23,7 +23,7 @@ class UserRepository {
     return userSequelizeInstance;
   }
 
-  public async findById(userId: string): Promise<SequelizeUser> {
+  public async findById(userId: number): Promise<SequelizeUser> {
     const userSequelizeInstance = await SequelizeUser.findOne({
       where: { id: userId },
     });
