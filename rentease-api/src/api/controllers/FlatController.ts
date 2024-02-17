@@ -17,6 +17,21 @@ export class FlatController {
     }
   };
 
+  getById = async (req: Request, res: Response, next: NextFunction) => {
+    const flatId = req.params.id;
+    const userId = req.body.id;
+
+    try {
+      const flat = await this.flatService.getById(
+        parseInt(flatId),
+        parseInt(userId)
+      );
+      res.status(200).json(flat);
+    } catch (error) {
+      next(error);
+    }
+  };
+
   create = async (req: Request, res: Response, next: NextFunction) => {
     const userId = req.body.id;
     const body = req.body;

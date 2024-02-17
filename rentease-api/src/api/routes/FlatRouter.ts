@@ -8,6 +8,7 @@ const router = Router();
 const flatController = new FlatController();
 
 router.get("/all", jwtTokenVerify, flatController.getAll);
+router.get("/:id", jwtTokenVerify, flatController.getById);
 router.post(
   "/create",
   FlatValidator.validateCreation,

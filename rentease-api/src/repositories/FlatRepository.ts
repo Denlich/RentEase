@@ -14,6 +14,11 @@ export class FlatRepository {
     return flats;
   }
 
+  public async findFlatById(id: number): Promise<FlatDTO | null> {
+    const flat = await SequelizeFlat.findByPk(id);
+    return flat;
+  }
+
   public async save(flat: CreateFlatDTO): Promise<SequelizeFlat> {
     const flatSequelizeInstance = await SequelizeFlat.create(flat);
     return flatSequelizeInstance;
@@ -23,13 +28,13 @@ export class FlatRepository {
     flatId: number,
     userId: number,
     flat: UpdateFlatDTO
-  ): Promise<SequelizeFlat> {
+  ): Promise<SequelizeFlat | null> {
     const flatSequelizeInstance = await SequelizeFlat.findOne({
       where: { id: flatId, userId },
     });
 
     await flatSequelizeInstance!.update(flat);
-    return flatSequelizeInstance!;
+    return flatSequelizeInstance;
   }
 
   public async delete(flatId: number, userId: number): Promise<void> {
