@@ -4,14 +4,16 @@ import Typography from "../typography";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  errorMessage?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, name, ...props }, ref) => {
+  ({ label, name, errorMessage, ...props }, ref) => {
     return (
       <div className={styles.stack}>
         <Typography>{label}</Typography>
         <input name={name} ref={ref} className={styles.input} {...props} />
+        {errorMessage && <Typography color="error">{errorMessage}</Typography>}
       </div>
     );
   }

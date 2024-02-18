@@ -7,11 +7,16 @@ interface TypographyProps
     HTMLParagraphElement
   > {
   children: React.ReactNode;
+  color?: "error" | "black";
 }
 
-const Typography: React.FC<TypographyProps> = ({ children, ...props }) => {
+const Typography: React.FC<TypographyProps> = ({
+  color = "black",
+  children,
+  ...props
+}) => {
   return (
-    <p className={styles.typography} {...props}>
+    <p className={styles.typography + " " + styles[color]} {...props}>
       {children}
     </p>
   );
