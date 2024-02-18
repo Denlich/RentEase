@@ -3,6 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { routeTree } from "./routeTree.gen";
 
+import "./styles/reset.css";
+
 const router = createRouter({ routeTree });
 
 declare module "@tanstack/react-router" {
